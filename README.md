@@ -47,8 +47,8 @@ If this is not the first schedule you’ve generated, move the previous “sched
 
 Open up the R Application, copy and paste the following chunk of code into the console (after the “>”), and press enter/return:
 
-setwd('~/Desktop/Scheduler')     
-source('~/Desktop/Scheduler/generateSchedule.R')    
+setwd('\~/Desktop/Scheduler')     
+source('\~/Desktop/Scheduler/generateSchedule.R')    
 generateSchedule()    
 
 Two files: “schedule.xlsx” and “employeeHours.xlsx” should have appeared in the Scheduler folder.
