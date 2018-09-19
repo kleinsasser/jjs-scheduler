@@ -1,0 +1,119 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AndaleMono;\f2\fnil\fcharset0 Monaco;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww17400\viewh9580\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs28 \cf0 System Requirements\
+
+\b0\fs24 -System must have Microsoft Excel with a version from no later than 2007 installed.\
+-System must have the free software \'93R\'94 installed, can be downloaded from this link \{{\field{\*\fldinst{HYPERLINK "https://cran.r-project.org/mirrors.html"}}{\fldrslt https://cran.r-project.org/mirrors.html}}\} (select link with location closest to your area, select download for your operating system)\
+\
+LEAVE THE SCHEDULER FOLDER IN ITS CURRENT STATE SAVED TO THE DESKTOP
+\b\fs28 \
+\
+Step 1 - Fill in \'93SchedulerData.xlsx\'94 with appropriate information.
+\b0\fs24 \
+\
+DO NOT EDIT COLUMNS OR ROWS SHADED IN GRAY OR CHANGE COLUMN NAMES\
+If an employee is terminated or added, just insert and delete rows accordingly. (Do not leave rows blank)\
+\
+
+\b Variable Information - Employees Sheet\
+
+\b0 This is where you fill in information about your employees\'92 availability and desired hours.
+\b \
+
+\b0 \
+
+\b Name
+\b0  - Name of employee \
+
+\b Driver
+\b0  - If the employee is a driver or can drive, insert TRUE, otherwise FALSE\
+
+\b InShop
+\b0  - Same thing as Driver but for InShop employees\
+
+\b Days
+\b0  - TRUE or FALSE on whether or not the employee works days\
+
+\b Nights
+\b0  - TRUE or FALSE on whether or not the employee works nights\
+
+\b MaxHours
+\b0  - The maximum amount of hours the employee can work\
+
+\b TargetHoursDay
+\b0  - The desired amount of day shift hours desired for an employee\
+
+\b TargetHoursNight
+\b0  - The desired amount of night shift hours desired for an employee\
+
+\b TargetHoursInShop
+\b0  - The desired amount of in-shop hours desired for an employee\
+
+\b TargetHoursDriver 
+\b0 - The desired amount of driving hours desired for an employee\
+
+\b PriorityDriver
+\b0  
+\fs22 - 
+\fs24 Gives priority of driver shift assignment to the employee with the lowest value. Each employee must have a number, 1, 2, 3, or 4, assigned.\
+
+\b PriorityInShop
+\b0  - Gives priority of driver shift assignment to the employee with the lowest value. Each employee must have a number, 1, 2, 3, or 4, assigned.\
+\
+
+\b WedAM->TuesPM 
+\b0 - This is where specific shifts requested off are accounted for\'97insert TRUE if a shift has been requested off. Color code cells to ease the process if desired. Copy and paste color-coded cells to the corresponding sections of the schedule template to avoid color-coding more than once.\
+\
+
+\b Variable Information - Days/Nights Sheets\
+
+\b0 This is where you will create shifts that need to be assigned.\
+\
+
+\b Shift 
+\b0 - Descriptive but short name of the shift specifying its duration. Each shift name must be unique. Example set of shifts: 10-5, 11-R, 11-R(2)-indicating a shift that has one or more duplicates, 10-5(D)-indicating a driving shift\
+
+\b Hours
+\b0  - Number indicating the length in hours of the particular shift.\
+
+\b Driver
+\b0  - TRUE or FALSE indicating whether or not the shift is a driving shift (does not eliminate the necessity of a unique shift name)\
+\
+
+\b\fs26 SAVE INFORMATION IN FILE BEFORE MOVING ON
+\b0\fs24 \
+\
+
+\b\fs28 Step 2 - Generate Schedule in R\
+\
+
+\b0\fs24 If this is not the first schedule you\'92ve generated, move the previous \'93schedule.xlsx\'94 and \'93employeeHours.xlsx\'94 files out of the \'93Scheduler\'94 folder.\
+\
+Open up the R Application, copy and paste the following chunk of code into the console (after the \'93>\'94), and press enter/return:\
+\
+
+\f1\fs22 setwd('~/Desktop/Scheduler')\
+source('~/Desktop/Scheduler/generateSchedule.R')\
+generateSchedule()
+\f2\fs24 \
+\
+
+\f0 Two files: \'93schedule.xlsx\'94 and \'93employeeHours.xlsx\'94 should have appeared in the Scheduler folder.\
+\'93schedule.xlsx\'94 is the actual schedule that will be pasted into the format template\
+\'93employeeHours.xlsx\'94 is a file describing the amount of hours each employee was scheduled by \'93Day\'94, \'93Night\'94, \'93InShop\'94, and \'93Driver\'94. Should be used to make sure all employees are scheduled properly. If the schedule is for just about any reason inadequate, it can most likely be solved by adjusting TargetHours of employees, saving the file, running the R code again, and reopening the schedule and employeeHours files.\
+\
+
+\b\fs28 Step 3 - Format Schedule\
+\
+
+\b0\fs24 Using the \'93formatTemplate.xlsx\'94 file, manually schedule manager and PIC shifts, copy and paste color coded shifts into the employee area, and copy and paste the schedule from \'93schedule.xlsx\'94 into the format template.\
+\
+Simple as that.
+\b\fs28 \
+}
